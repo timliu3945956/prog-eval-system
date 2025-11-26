@@ -1,0 +1,39 @@
+# Backend - Maven
+prog-eval-backend/target/
+prog-eval-backend/.classpath
+prog-eval-backend/.project
+prog-eval-backend/.settings/
+prog-eval-backend/*.log
+prog-eval-backend/bin/
+prog-eval-backend/.factorypath
+
+# Frontend - Node/Vite
+prog-eval-ui/node_modules/
+prog-eval-ui/dist/
+prog-eval-ui/.env.local
+prog-eval-ui/.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables (never commit credentials)
+.env
+.env.local
+application-local.properties

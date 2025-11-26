@@ -1,0 +1,756 @@
+.evaluation-manager {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.evaluation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 1rem;
+}
+
+.evaluation-header h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.btn-primary {
+  padding: 0.75rem 1.5rem;
+  background: #0066cc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.btn-primary:hover {
+  background: #0052a3;
+}
+
+.btn-back {
+  padding: 0.5rem 1rem;
+  background: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  transition: background 0.2s;
+}
+
+.btn-back:hover {
+  background: #5a6268;
+}
+
+.evaluation-form {
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.evaluation-form h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-group select,
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.form-group select:focus,
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #0066cc;
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+.form-group select:disabled {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+}
+
+.section-info {
+  background-color: #e3f2fd;
+  padding: 12px;
+  border-radius: 4px;
+  border-left: 4px solid #2196F3;
+  margin: 15px 0;
+}
+
+.section-info h4 {
+  margin: 0;
+  color: #1976D2;
+}
+
+.no-objectives-warning {
+  background: #fff3cd;
+  border: 1px solid #ffc107;
+  border-radius: 4px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-left: 4px solid #ff9800;
+}
+
+.no-objectives-warning p {
+  margin: 0.5rem 0;
+  color: #333;
+}
+
+.no-objectives-warning strong {
+  color: #d84315;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.btn-save,
+.btn-cancel {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background 0.2s;
+  flex: 1;
+}
+
+.btn-save {
+  background: #0066cc;
+  color: white;
+}
+
+.btn-save:hover {
+  background: #0052a3;
+}
+
+.btn-cancel {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.btn-cancel:hover {
+  background: #d0d0d0;
+}
+
+.error-message {
+  background: #ffebee;
+  color: #c62828;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #c62828;
+}
+
+.no-data {
+  text-align: center;
+  color: #999;
+  padding: 40px 20px;
+  font-style: italic;
+}
+
+.sections-list {
+  margin-top: 30px;
+}
+
+.sections-list h3 {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.sections-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 15px;
+}
+
+.section-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-left: 4px solid #0066cc;
+  transition: box-shadow 0.2s;
+}
+
+.section-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.section-details {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.section-details p {
+  margin: 5px 0;
+}
+
+.evaluation-progress {
+  margin-bottom: 12px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #0066cc, #0052a3);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: bold;
+  transition: width 0.3s;
+}
+
+.progress-text {
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+}
+
+.section-actions {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+}
+
+.btn-enter-data,
+.btn-duplicate {
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.btn-enter-data {
+  background: #0066cc;
+  color: white;
+}
+
+.btn-enter-data:hover {
+  background: #0052a3;
+}
+
+.btn-duplicate {
+  background: #0066cc;
+  color: white;
+}
+
+.btn-duplicate:hover {
+  background: #0052a3;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: white;
+  border-radius: 8px;
+  padding: 25px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  max-width: 500px;
+  width: 90%;
+}
+
+.modal h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.modal p {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.btn-close-modal {
+  width: 100%;
+  padding: 0.75rem;
+  background: #666;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.btn-close-modal:hover {
+  background: #555;
+}
+
+/* Objectives Container */
+.objectives-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.objective-section {
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-left: 4px solid #0066cc;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.objective-title {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.2rem;
+  color: #0066cc;
+  font-weight: 600;
+}
+
+/* Assessment Method */
+.assessment-method-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.assessment-method-group select {
+  flex: 1;
+  min-width: 200px;
+}
+
+.custom-method-wrapper {
+  width: 100%;
+  margin-top: 0.75rem;
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.custom-method-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.custom-method-input:focus {
+  outline: none;
+  border-color: #0066cc;
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+/* Count Inputs */
+.count-help-text {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.count-inputs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.count-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.count-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.count-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-align: center;
+  transition: border-color 0.2s;
+}
+
+.count-group input:focus {
+  outline: none;
+  border-color: #0066cc;
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+/* Field Error */
+.field-error {
+  display: block;
+  color: #c62828;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  font-weight: 500;
+}
+
+/* Objectives List View */
+.objectives-list-container {
+  margin: 2rem 0;
+}
+
+.objectives-list-container h3 {
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.objectives-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.objective-list-item {
+  background: white;
+  border: 1px solid #ddd;
+  border-left: 4px solid #0066cc;
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 1.5rem;
+  transition: box-shadow 0.2s;
+}
+
+.objective-list-item:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.objective-list-item.completed {
+  background-color: #f0f8f4;
+  border-left-color: #4caf50;
+}
+
+.objective-info h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  color: #0066cc;
+  font-weight: 600;
+}
+
+.objective-info p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.objective-status {
+  display: flex;
+  align-items: center;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.status-badge.completed {
+  background-color: #c8e6c9;
+  color: #2e7d32;
+}
+
+.status-badge.pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.btn-edit-objective {
+  padding: 0.6rem 1rem;
+  background: #0066cc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.btn-edit-objective:hover {
+  background: #0052a3;
+}
+
+/* Objective Edit Form */
+.objective-edit-form {
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.objective-edit-header {
+  background-color: #e3f2fd;
+  padding: 1rem;
+  border-radius: 4px;
+  border-left: 4px solid #2196F3;
+  margin-bottom: 1.5rem;
+}
+
+.objective-edit-header h3 {
+  margin: 0 0 0.5rem 0;
+  color: #1976D2;
+}
+
+.objective-edit-header p {
+  margin: 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* Degree Selection */
+.degree-selection-container {
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.degree-selection-container h3 {
+  margin-top: 0;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.degree-selection-help {
+  color: #666;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.degrees-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.degree-card {
+  background: white;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: center;
+}
+
+.degree-card:hover {
+  border-color: #0066cc;
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.15);
+  transform: translateY(-2px);
+}
+
+.degree-card:active {
+  background-color: #f0f7ff;
+}
+
+.degree-name {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.degree-level {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.degree-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e3f2fd;
+  padding: 1rem;
+  border-radius: 4px;
+  border-left: 4px solid #2196F3;
+  margin-bottom: 1.5rem;
+}
+
+.degree-header h3 {
+  margin: 0;
+  color: #1976D2;
+}
+
+.degree-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.degree-eval-card {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.degree-eval-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-color: #0066cc;
+}
+
+.degree-card-header {
+  margin-bottom: 1rem;
+}
+
+.degree-card-header h4 {
+  margin: 0 0 0.25rem 0;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.degree-eval-card .degree-level {
+  margin: 0;
+  color: #666;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.degree-progress-section {
+  margin-bottom: 1.5rem;
+}
+
+.degree-eval-card .progress-bar {
+  height: 8px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.degree-eval-card .progress-fill {
+  height: 100%;
+  background-color: #0066cc;
+  transition: width 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.degree-eval-card .progress-text {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.btn-enter-degree {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-enter-degree:hover {
+  background-color: #0052a3;
+}
+
+.btn-enter-degree:active {
+  background-color: #004080;
+}
+
