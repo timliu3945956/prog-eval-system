@@ -140,7 +140,7 @@ function InstructorQuery() {
                 }}
               >
                 <div className="instructor-name">{instructor.name}</div>
-                <div className="instructor-id">ID: {instructor.id}</div>
+                <div className="instructor-id">Instructor ID: {instructor.instructorId}</div>
               </button>
             ))}
           </div>
