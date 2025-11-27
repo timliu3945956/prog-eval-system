@@ -217,29 +217,26 @@ function CourseQuery() {
                   No sections found for the selected course and semester range.
                 </p>
               ) : (
-                <div className="sections-list">
-                  <div className="sections-summary">
-                    <p>Found <strong>{sortedSections.length}</strong> section(s)</p>
-                  </div>
-                  {sortedSections.map(section => (
-                    <div key={section.id} className="section-item">
-                      <div className="section-header">
-                        <div className="section-number">Section {section.sectionNumber}</div>
-                        <div className="semester-badge">{section.semester}</div>
-                      </div>
-                      <div className="section-details">
-                        <div className="detail-row">
-                          <span className="detail-label">Instructor:</span>
-                          <span className="detail-value">{getInstructorName(section.instructorId)}</span>
-                        </div>
-                        <div className="detail-row">
-                          <span className="detail-label">Enrollment:</span>
-                          <span className="detail-value">{section.enrollment || 'N/A'}</span>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                <table className="data-table">
+                  <thead>
+                    <tr>
+                      <th>Section</th>
+                      <th>Semester</th>
+                      <th>Instructor</th>
+                      <th>Enrollment</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {sortedSections.map(section => (
+                      <tr key={section.id}>
+                        <td>{section.sectionNumber}</td>
+                        <td>{section.semester}</td>
+                        <td>{getInstructorName(section.instructorId)}</td>
+                        <td className="number">{section.enrollment || '-'}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               );
             })()}
           </div>

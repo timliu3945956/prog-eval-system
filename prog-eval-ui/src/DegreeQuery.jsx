@@ -180,22 +180,31 @@ function DegreeQuery() {
             {getCoursesForDegree(selectedDegree).length === 0 ? (
               <p className="no-data">No courses associated with this degree.</p>
             ) : (
-              <div className="courses-list">
-                {getCoursesForDegree(selectedDegree).map(course => (
-                  <div key={course.id} className="course-item">
-                    <div className="course-info">
-                      <h5>{course.courseNumber}: {course.title}</h5>
-                      <p className="course-desc">{course.description || 'No description'}</p>
-                    </div>
-                    <div className="course-badge">
-                      {degreeMappings.find(m => m.courseId === course.id && m.degreeId === selectedDegree)?.isCore
-                        ? <span className="badge-core">CORE</span>
-                        : <span className="badge-elective">ELECTIVE</span>
-                      }
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <table className="data-table">
+                <thead>
+                  <tr>
+                    <th>Course Number</th>
+                    <th>Title</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {getCoursesForDegree(selectedDegree).map(course => (
+                <tr key={course.id}>
+                      <td className="code">{course.courseNumber}</td>
+                      <td>{course.title}</td>
+                      <td className="type-badge">
+                        {degreeMappings.find(m => m.courseId === course.id && m.degreeId === selectedDegree)?.isCore
+                          ? <span className="badge-core">CORE</span>
+                          : <span className="badge-elective">ELECTIVE</span>
+                        }
+                      </td>
+                      <td className="description" title={course.description || 'No description'}>{course.description || '-'}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             )}
           </div>
 
@@ -232,20 +241,29 @@ function DegreeQuery() {
               return sortedSections.length === 0 ? (
                 <p className="no-data">No sections found for the selected criteria.</p>
               ) : (
-                <div className="sections-list">
-                  {sortedSections.map(section => {
-                    const course = courses.find(c => c.id === section.courseId);
-                    return (
-                      <div key={section.id} className="section-item">
-                        <div className="section-info">
-                          <h5>{course?.courseNumber} - Section {section.sectionNumber}</h5>
-                          <p><strong>Semester:</strong> {section.semester}</p>
-                          <p><strong>Enrollment:</strong> {section.enrollment || 'N/A'}</p>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
+                <table className="data-table">
+                  <thead>
+                    <tr>
+                      <th>Course</th>
+                      <th>Section</th>
+                      <th>Semester</th>
+                      <th>Enrollment</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {sortedSections.map(section => {
+                      const course = courses.find(c => c.id === section.courseId);
+                      return (
+                        <tr key={section.id}>
+                          <td className="code">{course?.courseNumber}</td>
+                          <td>{section.sectionNumber}</td>
+                          <td>{section.semester}</td>
+                          <td className="number">{section.enrollment || '-'}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
               );
             })()}
           </div>
@@ -263,26 +281,30 @@ function DegreeQuery() {
               return uniqueObjectives.length === 0 ? (
                 <p className="no-data">No objectives associated with this degree.</p>
               ) : (
-                <div className="objectives-list">
-                  {uniqueObjectives.map(objective => (
-                    <div key={objective.id} className="objective-item">
-                      <div className="objective-info">
-                        <h5>{objective.code}</h5>
-                        <p>{objective.description}</p>
-                      </div>
-                      <div className="objective-courses">
-                        <strong>Courses:</strong>
-                        <div className="course-tags">
+                <table className="data-table">
+                  <thead>
+                    <tr>
+                      <th>Code</th>
+                      <th>Description</th>
+                      <th>Courses</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {uniqueObjectives.map(objective => (
+                      <tr key={objective.id}>
+                        <td className="code">{objective.code}</td>
+                        <td>{objective.description}</td>
+                        <td className="course-list">
                           {getCoursesForObjective(objective.id).map(course => (
                             <span key={course.id} className="course-tag">
                               {course.courseNumber}
                             </span>
                           ))}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               );
             })()}
           </div>

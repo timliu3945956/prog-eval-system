@@ -58,6 +58,14 @@ public class CourseService {
     }
 
     public void deleteCourse(Long id) {
+        Course course = courseRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Course not found"));
+        
+        // Check if course has any linked sections
+        if (course.getSections() != null && !course.getSections().isEmpty()) {
+            throw new RuntimeException("Cannot delete course with existing sections. Please delete the section(s) tied to this course first.");
+        }
+        
         courseRepository.deleteById(id);
     }
 

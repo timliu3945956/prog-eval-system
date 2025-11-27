@@ -87,11 +87,16 @@ function CourseManager() {
         method: 'DELETE'
       })
 
-      if (!response.ok) throw new Error(`API error: ${response.status}`)
+      if (!response.ok) {
+        const errorData = await response.json()
+        alert(`Cannot delete course: ${errorData.message}`)
+        return
+      }
 
       await fetchCourses()
     } catch (err) {
       console.error('Failed to delete course:', err)
+      alert('Error deleting course. Please try again.')
     }
   }
 

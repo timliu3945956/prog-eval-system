@@ -764,7 +764,7 @@ function EvaluationManager() {
                         className="btn-edit-objective"
                         onClick={() => handleSelectObjective(objective)}
                       >
-                        Enter Evaluation
+                        {status === 'completed' ? 'Edit Evaluation' : 'Enter Evaluation'}
                       </button>
                     </div>
                   );

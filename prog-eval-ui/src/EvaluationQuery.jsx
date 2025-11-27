@@ -215,50 +215,35 @@ function EvaluationQuery() {
         </div>
 
         <div className="results-list">
-          {queryResults.data.map(item => (
-            <div key={item.section.id} className={`result-item status-${item.status}`}>
-              <div className="result-header">
-                <div className="section-info">
-                  <h4>{getCourseName(item.section.courseId)}</h4>
-                  <p>Section {item.section.sectionNumber} • {getInstructorName(item.section.instructorId)}</p>
-                  <p>Enrollment: {item.section.enrollment || 'N/A'}</p>
-                </div>
-                <div className={`status-indicator status-${item.status}`}>
-                  {item.status === 'complete-with-comments' && '✓ Complete with Notes'}
-                  {item.status === 'complete' && '✓ Complete'}
-                  {item.status === 'partial' && '◐ Partial'}
-                  {item.status === 'not-entered' && '✗ Not Entered'}
-                </div>
-              </div>
-
-              {item.evaluationCount > 0 && (
-                <div className="evaluation-details">
-                  <p className="eval-count">Evaluations: {item.evaluationCount}</p>
-                  <div className="objectives-list">
-                    {item.evaluations.map(e => (
-                      <div key={e.id} className="objective-eval">
-                        <div className="objective-info">
-                          <p className="assessment">{e.assessmentMethod}</p>
-                          <div className="grades">
-                            <span>A: {e.countA}</span>
-                            <span>B: {e.countB}</span>
-                            <span>C: {e.countC}</span>
-                            <span>F: {e.countF}</span>
-                          </div>
-                        </div>
-                        {e.comments && (
-                          <div className="comments">
-                            <strong>Improvement Notes:</strong>
-                            <p>{e.comments}</p>
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          ))}
+          <table className="data-table evaluation-table">
+            <thead>
+              <tr>
+                <th>Course</th>
+                <th>Section</th>
+                <th>Instructor</th>
+                <th>Enrollment</th>
+                <th>Evals</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {queryResults.data.map(item => (
+                <tr key={item.section.id} className={`status-${item.status}`}>
+                  <td className="code">{getCourseName(item.section.courseId).split(':')[0]}</td>
+                  <td>{item.section.sectionNumber}</td>
+                  <td>{getInstructorName(item.section.instructorId)}</td>
+                  <td className="number">{item.section.enrollment || '-'}</td>
+                  <td className="number">{item.evaluationCount}</td>
+                  <td className={`status-badge status-${item.status}`}>
+                    {item.status === 'complete-with-comments' && '✓ Complete+Notes'}
+                    {item.status === 'complete' && '✓ Complete'}
+                    {item.status === 'partial' && '◐ Partial'}
+                    {item.status === 'not-entered' && '✗ Not Entered'}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     );
@@ -280,42 +265,36 @@ function EvaluationQuery() {
         </div>
 
         <div className="results-list pass-rate-results">
-          {queryResults.data.map(item => (
-            <div key={item.section.id} className={`result-item ${item.meetsThreshold ? 'meets-threshold' : 'below-threshold'}`}>
-              <div className="result-header">
-                <div className="section-info">
-                  <h4>{getCourseName(item.section.courseId)}</h4>
-                  <p>Section {item.section.sectionNumber} • {getInstructorName(item.section.instructorId)}</p>
-                  <p>Enrollment: {item.section.enrollment || 'N/A'}</p>
-                </div>
-                <div className="pass-rate-display">
-                  <div className={`pass-rate-circle ${item.meetsThreshold ? 'meets' : 'below'}`}>
-                    <span className="percentage">{item.passRatePercentage}%</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pass-rate-details">
-                <div className="stat-row">
-                  <span className="stat-label">Total Students:</span>
-                  <span className="stat-value">{item.totalStudents}</span>
-                </div>
-                <div className="stat-row">
-                  <span className="stat-label">Students Not F:</span>
-                  <span className="stat-value">{item.passCount}</span>
-                </div>
-                <div className="stat-row">
-                  <span className="stat-label">Evaluations:</span>
-                  <span className="stat-value">{item.evaluationCount}</span>
-                </div>
-                {item.passRatePercentage >= queryResults.threshold ? (
-                  <div className="threshold-met">✓ Meets {queryResults.threshold}% threshold</div>
-                ) : (
-                  <div className="threshold-not-met">✗ Below {queryResults.threshold}% threshold</div>
-                )}
-              </div>
-            </div>
-          ))}
+          <table className="data-table evaluation-table">
+            <thead>
+              <tr>
+                <th>Course</th>
+                <th>Section</th>
+                <th>Instructor</th>
+                <th>Total</th>
+                <th>Pass</th>
+                <th>Rate</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {queryResults.data.map(item => (
+                <tr key={item.section.id} className={item.meetsThreshold ? 'meets-threshold' : 'below-threshold'}>
+                  <td className="code">{getCourseName(item.section.courseId).split(':')[0]}</td>
+                  <td>{item.section.sectionNumber}</td>
+                  <td>{getInstructorName(item.section.instructorId)}</td>
+                  <td className="number">{item.totalStudents}</td>
+                  <td className="number">{item.passCount}</td>
+                  <td className={`pass-rate ${item.meetsThreshold ? 'meets' : 'below'}`}>
+                    {item.passRatePercentage}%
+                  </td>
+                  <td className={`status-indicator ${item.meetsThreshold ? 'meets' : 'below'}`}>
+                    {item.meetsThreshold ? '✓ Meets' : '✗ Below'}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     );
