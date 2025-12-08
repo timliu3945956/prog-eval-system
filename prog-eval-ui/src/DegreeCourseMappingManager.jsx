@@ -152,12 +152,12 @@ function DegreeCourseMappingManager() {
   return (
     <div className="mapping-manager">
       <div className="mapping-header">
-        <h2>Degree-Course Mappings</h2>
+        <h2>Program Curriculum</h2>
         <button 
           className="btn-primary" 
           onClick={() => setShowForm(!showForm)}
         >
-          {showForm ? 'Cancel' : 'Add Mapping'}
+          {showForm ? 'Cancel' : 'Add Curriculum Entry'}
         </button>
       </div>
 
@@ -210,7 +210,7 @@ function DegreeCourseMappingManager() {
           </div>
           <div className="form-buttons">
             <button type="submit" className="btn-save">
-              {editingId ? 'Update Mapping' : 'Add Mapping'}
+              {editingId ? 'Update Curriculum Entry' : 'Add Curriculum Entry'}
             </button>
             <button type="button" className="btn-cancel" onClick={handleCancel}>
               Cancel
@@ -220,12 +220,11 @@ function DegreeCourseMappingManager() {
       )}
 
       {mappings.length === 0 ? (
-        <p className="no-data">No mappings found. Add one to get started!</p>
+        <p className="no-data">No curriculum entries found. Add one to get started!</p>
       ) : (
         <table className="mapping-table">
           <thead>
             <tr>
-              <th>ID</th>
               <th>Degree</th>
               <th>Course</th>
               <th>Core Course</th>
@@ -235,7 +234,6 @@ function DegreeCourseMappingManager() {
           <tbody>
             {mappings.map(mapping => (
               <tr key={mapping.id}>
-                <td>{mapping.id}</td>
                 <td>{getDegreeName(mapping.degreeId)}</td>
                 <td>{getCourseName(mapping.courseId)}</td>
                 <td>{mapping.isCore ? 'Yes' : 'No'}</td>

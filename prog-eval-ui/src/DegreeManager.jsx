@@ -191,7 +191,6 @@ function DegreeManager() {
           <table>
             <thead>
               <tr>
-                <th>ID</th>
                 <th>Name</th>
                 <th>Level</th>
                 <th>Actions</th>
@@ -200,7 +199,6 @@ function DegreeManager() {
             <tbody>
               {degrees.map(degree => (
                 <tr key={degree.id}>
-                  <td>{degree.id}</td>
                   <td>{degree.name}</td>
                   <td>
                     <span className="badge">{degree.level}</span>

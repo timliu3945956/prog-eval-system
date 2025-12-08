@@ -177,7 +177,6 @@ function InstructorManager() {
         <table className="instructor-table">
           <thead>
             <tr>
-              <th>ID</th>
               <th>Instructor ID</th>
               <th>Name</th>
               <th>Actions</th>
@@ -186,7 +185,6 @@ function InstructorManager() {
           <tbody>
             {instructors.map(instructor => (
               <tr key={instructor.id}>
-                <td>{instructor.id}</td>
                 <td>{instructor.instructorId}</td>
                 <td>{instructor.name}</td>
                 <td className="actions">

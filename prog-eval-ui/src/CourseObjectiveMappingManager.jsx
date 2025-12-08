@@ -163,17 +163,17 @@ function CourseObjectiveMappingManager() {
     return objective ? `${objective.code} - ${objective.title}` : 'N/A';
   };
 
-  if (loading) return <div className="mapping-manager"><p>Loading course-objective associations...</p></div>;
+  if (loading) return <div className="mapping-manager"><p>Loading outcome alignments...</p></div>;
 
   return (
     <div className="mapping-manager">
       <div className="mapping-header">
-        <h2>Associate Courses with Learning Objectives</h2>
+        <h2>Outcome Alignment</h2>
         <button 
           className="btn-primary" 
           onClick={() => setShowForm(!showForm)}
         >
-          {showForm ? 'Cancel' : 'Add Association'}
+          {showForm ? 'Cancel' : 'Add Alignment'}
         </button>
       </div>
 
@@ -215,7 +215,7 @@ function CourseObjectiveMappingManager() {
           </div>
           <div className="form-buttons">
             <button type="submit" className="btn-save">
-              {editingId ? 'Update Association' : 'Add Association'}
+              {editingId ? 'Update Alignment' : 'Add Alignment'}
             </button>
             <button type="button" className="btn-cancel" onClick={handleCancel}>
               Cancel
@@ -225,12 +225,11 @@ function CourseObjectiveMappingManager() {
       )}
 
       {mappings.length === 0 ? (
-        <p className="no-data">No course-objective associations found. Add one to get started!</p>
+        <p className="no-data">No outcome alignments found. Add one to get started!</p>
       ) : (
         <table className="mapping-table">
           <thead>
             <tr>
-              <th>ID</th>
               <th>Course</th>
               <th>Learning Objective</th>
               <th>Actions</th>
@@ -239,7 +238,6 @@ function CourseObjectiveMappingManager() {
           <tbody>
             {mappings.map(mapping => (
               <tr key={mapping.id}>
-                <td>{mapping.id}</td>
                 <td>{getCourseName(mapping)}</td>
                 <td>{getObjectiveInfo(mapping)}</td>
                 <td className="actions">

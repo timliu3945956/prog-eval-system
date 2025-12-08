@@ -189,7 +189,6 @@ function LearningObjectiveManager() {
         <table className="objective-table">
           <thead>
             <tr>
-              <th>ID</th>
               <th>Code</th>
               <th>Title</th>
               <th>Description</th>
@@ -199,7 +198,6 @@ function LearningObjectiveManager() {
           <tbody>
             {objectives.map(objective => (
               <tr key={objective.id}>
-                <td>{objective.id}</td>
                 <td><span className="code-badge">{objective.code}</span></td>
                 <td>{objective.title}</td>
                 <td className="description-cell">{objective.description || '-'}</td>

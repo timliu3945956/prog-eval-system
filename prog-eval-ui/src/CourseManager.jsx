@@ -208,7 +208,6 @@ function CourseManager() {
           <table>
             <thead>
               <tr>
-                <th>ID</th>
                 <th>Course Number</th>
                 <th>Title</th>
                 <th>Description</th>
@@ -218,7 +217,6 @@ function CourseManager() {
             <tbody>
               {courses.map(course => (
                 <tr key={course.id}>
-                  <td>{course.id}</td>
                   <td>
                     <span className="badge">{course.courseNumber}</span>
                   </td>

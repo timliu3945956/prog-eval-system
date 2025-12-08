@@ -45,8 +45,8 @@ function App() {
       id: 'mappings',
       label: 'Associations',
       items: [
-        { id: 'degree-course', label: 'Degree-Course' },
-        { id: 'mappings', label: 'Course-Objective' }
+        { id: 'degree-course', label: 'Program Curriculum' },
+        { id: 'mappings', label: 'Outcome Alignment' }
       ]
     },
     {

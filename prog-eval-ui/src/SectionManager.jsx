@@ -331,7 +331,6 @@ function SectionManager() {
         <table className="section-table">
           <thead>
             <tr>
-              <th>ID</th>
               <th>Course</th>
               <th>Instructor</th>
               <th>Semester</th>
@@ -343,7 +342,6 @@ function SectionManager() {
           <tbody>
             {sections.map(section => (
               <tr key={section.id}>
-                <td>{section.id}</td>
                 <td>{section.courseNumber && section.courseTitle ? `${section.courseNumber} - ${section.courseTitle}` : 'Course undefined'}</td>
                 <td>{section.instructorName || 'Instructor undefined'}</td>
                 <td>{section.semester}</td>
